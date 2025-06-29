@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fixed Sidebar Layout</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      box-sizing: border-box;
+    }
+
+    .sidebar {
+      width: 220px;
+      background-color: #3d0606;
+      color: white;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      padding-top: 20px;
+    }
+
+    .sidebar h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 12px 20px;
+      text-decoration: none;
+      color: white;
+    }
+
+    .sidebar a:hover {
+      background-color: #1c1c3c;
+    }
+
+    .main-content {
+      margin-left: 220px;
+      padding: 20px;
+    }
+
+    .header-banner {
+      background-image: url("https://i.imgur.com/sOzxm7h.jpeg");
+      background-size: cover;
+      background-position: center;
+      color: white;
+      height: 250px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .header-banner::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+
+    .overlay-text {
+      position: relative;
+      z-index: 2;
+    }
+
+    main {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin-top: 20px;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      color: #666;
+    }
+
+    .dark-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 5;
+      padding: 10px 15px;
+      background-color: #3d0606;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .dark-btn:hover {
+      background-color: #444;
+    }
+
+    /* Dark Mode */
+    body.dark-mode {
+      background-color: #11101c;
+      color: #eee;
+    }
+
+    body.dark-mode main {
+      background-color: #1c1c2c;
+      color: white;
+    }
+
+    body.dark-mode footer {
+      color: #aaa;
+    }
+
+    body.dark-mode .sidebar {
+      background-color: #070524;
+    }
+  </style>
+</head>
+<body>
+
+  <button id="darkToggle" class="dark-btn">🌙</button>
+
+  <div class="sidebar">
+    <h2>My Menu</h2>
+    <a href="#">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    
+  </div>
+
+  <div class="main-content">
+    <header class="header-banner">
+      <div class="overlay-text">
+        <h1>My Website</h1>
+        <p>Welcome to my awesome site with a fixed sidebar.</p>
+      </div>
+    </header>
+
+    <main>
+      <h2>Hello there!</h2>
+      <p>
+        Welcome! My name is Auna Nabilah, and I am a dedicated professional librarian with a strong passion for connecting people with the information they need to thrive—whether in academic, professional, or personal settings. I believe libraries are more than just repositories of books; they are dynamic spaces where learning, curiosity, and critical thinking are nurtured.
+      </p>
+    </main>
+
+    <footer>
+      &copy; 2025 My Website | All rights reserved.
+    </footer>
+  </div>
+
+  <script>
+    const toggle = document.getElementById('darkToggle');
+    toggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+
+      if (document.body.classList.contains('dark-mode')) {
+        localStorage.setItem('theme', 'dark');
+      } else {
+        localStorage.setItem('theme', 'light');
+      }
+    });
+
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark-mode');
+    }
+  </script>
+
+</body>
+</html>
+

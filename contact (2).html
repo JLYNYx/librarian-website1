@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Me</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+  
+   .back-btn {
+  background-color: #3d0606;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 20px;
+  font-size: 16px;
+  border-radius: 0px;
+  cursor: pointer;
+}
+
+.back-btn:hover {
+  background-color: #005f99;
+}
+</style>
+</head>
+<body>
+
+  <!-- Dark mode toggle -->
+  <button id="darkToggle" class="dark-btn">🌙</button>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>Menu</h2>
+    <a href="about.html">About</a>
+    <a href="contact.html" class="active">Contact</a>
+  </div>
+
+  <!-- Main content -->
+  <div class="main-content">
+    <!-- Back Button -->
+    <button onclick="history.back()" class="back-btn">← Back</button>
+
+    <header>
+      <h1>Contact Me</h1>
+      <p>Feel free to reach out!</p>
+    </header>
+
+    <main>
+      <section>
+        <h2>Contact Information</h2>
+        <p><a href="mailto:nabilahauna@gmail.com">Email Me</a> </p>
+        <p>Phone: +60 12-345 6789</p>
+      </section>
+
+      <section>
+        <h2>Contact Form</h2>
+        <form>
+          <label for="name">Name:</label><br />
+          <input type="text" id="name" name="name" required><br /><br />
+
+          <label for="email">Email:</label><br />
+          <input type="email" id="email" name="email" required><br /><br />
+
+          <label for="message">Message:</label><br />
+          <textarea id="message" name="message" rows="5" required></textarea><br /><br />
+
+          <button type="submit" class="back-btn">Send</button>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      &copy; 2025 My Website | All rights reserved.
+    </footer>
+  </div>
+
+  <!-- Dark mode script -->
+  <script>
+    const toggle = document.getElementById('darkToggle');
+    toggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      if (document.body.classList.contains('dark-mode')) {
+        localStorage.setItem('theme', 'dark');
+      } else {
+        localStorage.setItem('theme', 'light');
+      }
+    });
+
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark-mode');
+    }
+  </script>
+</body>
+</html>
